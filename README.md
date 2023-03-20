@@ -1,0 +1,1 @@
+Hybrid Android/Web app created with Preact, Capacitor and Vite. And other bits and pieces.
