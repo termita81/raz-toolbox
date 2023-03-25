@@ -35,9 +35,8 @@ export default function Main(props: unknown) {
         return <ToolLauncher {...launcher} />
       })}
 
-      <Match path="/">{function () {
-        console.log(arguments)
-        return <pre>{'yay'}</pre>
+      <Match path="/">{function ({url}: {url: string}) {
+        return <pre>{url}</pre>
       }}
       </Match>
 
