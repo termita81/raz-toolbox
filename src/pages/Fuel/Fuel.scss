@@ -1,0 +1,47 @@
+.fuel-item {
+    border: 1px dotted rgb(53, 42, 42)
+}
+
+.fuel-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    // border: 10px dashed yellow;
+    overflow-y: auto;
+    padding: 15px 0 15px 0;
+}
+
+.add-fuel-item {
+    position: fixed;
+    right: 20px;
+    bottom: calc(20px + 3rem);
+}
+
+.fuel-item-card {
+    color: #000;
+    // font-size: 1.2rem;
+    padding: 5px 10px;
+    border: 1px solid #e74f08;
+    margin: 10px;
+    border-radius: 5px;
+    text-align: left;
+    span {
+        color: rgb(53, 37, 37)
+    }
+    div:nth-child(1) {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        span:nth-child(2) {
+            color: green
+        }
+    }
+    div:nth-child(2) {
+        display: flex;
+        flex-direction: row;
+    }
+}
+
+/*
+have 
+*/

@@ -7,7 +7,9 @@ export interface ToolLauncherProps {
 }
 
 export default function ToolLauncher(props: ToolLauncherProps) {
-    return <Link href={props.link}>
-        <button class="launcher-button">{props.text}</button>
+    return <Link href={props.link} class="launcher-button">
+        <button class="launcher-button">
+            {props.text}
+        </button>
     </Link>
 }
