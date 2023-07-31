@@ -1,9 +1,12 @@
 import Router, { Route } from 'preact-router'
 import Match from 'preact-router/match';
-import { signal } from '@preact/signals'
+// import { signal } from '@preact/signals'
 import ToolLauncher, { ToolLauncherProps } from '../../components/ToolLauncher/ToolLauncher'
 import './Main.css'
 import { Fuel } from '../Fuel/Fuel';
+import { Modal } from '../../components/Modal/Modal';
+// import { useState } from 'preact/hooks';
+// import { JSX } from 'preact/jsx-runtime';
 
 const toolLaunchers: ToolLauncherProps[] = [
   { link: '/fuel', text: '⛽ Fuel' },
@@ -12,26 +15,26 @@ const toolLaunchers: ToolLauncherProps[] = [
 ]
 
 export default function Main(props: unknown) {
-  const modalData = signal({
-    isVisible: false,
-    content: 'nothing, really'
-  })
+  // const [isModalVisible, setIsModalVisible] = useState(false)
+  // const [modalContent, setModalContent] = useState(<></>)
+  
   const handleRoute = async function () {
     console.log('handleRoute', arguments)
   }
+
   return (
     <>
       <div className="main-container">
         <div className="nav">
-          {toolLaunchers.map((launcher, index) => {
+          {toolLaunchers.map(launcher => {
             return <ToolLauncher {...launcher} />
           })}
         </div>
 
-        <Match path="/">{function ({ url }: { url: string }) {
+        {/* <Match path="/">{function ({ url }: { url: string }) {
           return url.indexOf('fuel') >= 0 ? null : <pre>{url}</pre>
         }}
-        </Match>
+        </Match> */}
 
         <div className="main">
           <Router onChange={handleRoute}>
@@ -43,14 +46,7 @@ export default function Main(props: unknown) {
         </div>
       </div>
 
-
-      <aside>
-          THis is the modal
-        </aside>
+      <Modal />
     </>
   )
-}
-
-export function setModalVisibility(to: boolean) {
-
 }

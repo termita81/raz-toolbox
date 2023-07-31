@@ -37,14 +37,3 @@
   align-items: center;
   /* /center content */
 }
-
-aside {
-  display: none;
-  width: 90vw;
-  height: 90vh;
-  background-color: #c59996;
-  position: fixed;
-  top: auto;
-  left: auto;
-  z-index: 1;
-}
