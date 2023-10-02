@@ -27,4 +27,6 @@ CapacitorApp.addListener('backButton', function () {
   CapacitorApp.exitApp()
 })
 
+console.log('rendering App')
+
 render(<Main />, document.getElementById('app') as HTMLElement)

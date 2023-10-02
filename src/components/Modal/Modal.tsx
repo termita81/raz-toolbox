@@ -2,11 +2,19 @@ import { useRef, useState } from 'preact/hooks'
 import './Modal.scss'
 import { JSX } from 'preact/jsx-runtime'
 import { signal } from '@preact/signals'
+import { VNode } from 'preact'
 
-const modalData = signal({
+interface ModalSignalProps {
+  isVisible: boolean
+  content: VNode
+  result?: boolean
+  callback?: (x:any) => any
+}
+
+const modalData = signal<ModalSignalProps>({
   isVisible: false,
   content: <></>,
-  result: null
+  result: undefined
 })
 
 export function Modal() {
@@ -22,27 +30,35 @@ export function Modal() {
   //     </div>
   //   </aside>
   // ) : null
-  return modalData.value.isVisible ? (
-    <aside class="modal" ref={ref} onClick={e => {
-      if (e.target === ref.current)
-        modalData.value = { ...modalData.value, isVisible: false }
-    }}>
+  if (!modalData.value.isVisible) return null
+
+  const onClickOutside = (evt: JSX.TargetedMouseEvent<HTMLElement>) => {
+    if (evt.target === ref.current)
+      modalData.value = { ...modalData.value, isVisible: false }
+  }
+
+  const close = (result: boolean) => {
+    modalData.value = {...modalData.value, isVisible: false, result}
+    modalData.value.callback?.apply(null, [result])
+  }
+
+  return (
+    <aside class="modal" ref={ref} onClick={onClickOutside}>
       <div className="modal-content">
         <div className="modal-user-content">
           {modalData.value.content}
         </div>
-
         <div className="modal-footer">
-          <button>OK</button>
-          <button>Cancel</button>
+          <button onClick={() => close(true)}>OK</button>
+          <button onClick={() => close(false)}>Cancel</button>
         </div>
       </div>
     </aside>
-  ) : null
+  )
 }
 
-export function showModal(content: JSX.Element) {
-  modalData.value = { ...modalData.value, content, isVisible: true }
+export function showModal(content: JSX.Element, callback: (x: any) => any) {
+  modalData.value = { ...modalData.value, content, isVisible: true, callback }
 }
 
 export function isModalShowing() {

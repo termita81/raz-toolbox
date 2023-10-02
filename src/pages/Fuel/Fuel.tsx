@@ -1,4 +1,4 @@
-import { useState } from 'preact/hooks'
+import { useEffect, useRef, useState } from 'preact/hooks'
 import './Fuel.scss'
 import { JSX } from 'preact/jsx-runtime'
 import dayjs from 'dayjs'
@@ -73,7 +73,7 @@ const someData: FuelItem[] = [
     highwayVsOverall: .20
   },
   {
-    id: '5',
+    id: '6',
     date: '2023/04/11 18:34',
     station: 'United Puma 44',
     location: 'Northbridge',
@@ -84,7 +84,7 @@ const someData: FuelItem[] = [
     highwayVsOverall: .20
   },
   {
-    id: '5',
+    id: '7',
     date: '2023/04/11 18:34',
     station: 'United Puma 324',
     location: 'Northbridge',
@@ -95,7 +95,7 @@ const someData: FuelItem[] = [
     highwayVsOverall: .20
   },
   {
-    id: '5',
+    id: '8',
     date: '2021/04/11 18:34',
     station: 'United Puma 3245',
     location: 'Northbridge',
@@ -106,7 +106,7 @@ const someData: FuelItem[] = [
     highwayVsOverall: .20
   },
   {
-    id: '5',
+    id: '9',
     date: '2022/04/11 18:34',
     station: 'United Puma658546',
     location: 'Northbridge',
@@ -117,7 +117,18 @@ const someData: FuelItem[] = [
     highwayVsOverall: .20
   },
   {
-    id: '5',
+    id: '10',
+    date: '2020/04/11 18:34',
+    station: 'United Puma9678',
+    location: 'Northbridge',
+    distance: 192187,
+    cost: 95.19,
+    volume: 56.02,
+    filled: true,
+    highwayVsOverall: .20
+  },
+  {
+    id: '11',
     date: '2020/04/11 18:34',
     station: 'United Puma9678',
     location: 'Northbridge',
@@ -134,9 +145,12 @@ export function Fuel() {
   const [data, setData] = useState<FuelItem[]>(someData)
   data.sort((a, b) => dayjs(a.date).isAfter(dayjs(b.date)) ? -1 : 0)
 
-  const handleClick = function () {
-    console.log('clicked on item', arguments)
-    showModal(<div style={{ background: 'yellow', width: '10rem', height: '9rem' }}>Ana are mere</div>)
+  const handleClick = function (item: FuelItem) {
+    console.log('clicked on item', item)
+    const content = <div style={{ background: 'blue', width: '10rem', height: '9rem' }}>
+      <FuelItemDetails item={{ ...item }}></FuelItemDetails>
+    </div>
+    showModal(content, ex => console.log(`returned`, ex, item))
   }
 
   return <div className="fuel-container" onBlur={() => console.log('blurred')}>
@@ -145,10 +159,10 @@ export function Fuel() {
       // setData([...data, text])
       setText('')
     }}>Add</button>
-
-    {/* <input value={text} onChange={(e) => {
-            setText((e.target as HTMLInputElement).value)
-        }}></input> */}
+    {/* 
+    <input style={{ margin: '20px'}} value={text} onChange={(e) => {
+      setText((e.target as HTMLInputElement).value)
+    }}></input> */}
 
     {data.map((item, index) => {
       return <FuelItemCard key={item.id + index} {...{ item, handleClick }} />
@@ -161,17 +175,18 @@ function valid(text: string) {
 }
 
 export function FuelItemCard({ item, handleClick }:
-  { item: FuelItem, handleClick: (x: any) => void }) {
-  const date = dayjs(item.date)
+  { item?: FuelItem, handleClick: (x: any) => void }) {
+  const date = dayjs(item?.date ?? Date())
   const dateStringFormat = date.year() < new Date().getFullYear() ? "YYYY-MMM-DD" : "MMM DD"
-  const from = [item.station, item.location].join(', ')
-  const distance = `${item.distance.toLocaleString('en')} km`
-  const cost = `$${item.cost.toFixed(2)}`
-  const volume = `${item.volume} ltr`
+  const dateFormatted = dayjs(date).format(dateStringFormat)
+  const from = item ? [item.station, item.location].join(', ') : ''
+  const distance = item ? `${item.distance.toLocaleString('en')} km` : ''
+  const cost = item ? `$${item.cost.toFixed(2)}` : ''
+  const volume = item ? `${item.volume} ltr` : ''
 
   return <div className="fuel-item-card" onClick={() => handleClick(item)}>
     <div>
-      <span>📅 {dayjs(item.date).format(dateStringFormat)}</span>
+      <span>📅 {dateFormatted}</span>
       <span>{from}</span>
     </div>
     <div>
@@ -185,7 +200,55 @@ export function FuelItemCard({ item, handleClick }:
 }
 
 export function FuelItemDetails({ item }: { item: FuelItem }) {
+  // const [count, setCount] = useState(0);
+  // useEffect(() => {
+  //   setInterval(() => {
+  //     setCount(prevCount => prevCount + 1);
+  //   }, 1000);
+  // }, []);
+  // return <h1>The component has been rendered for {count} seconds</h1>;
+
+
+console.log('before useSTate')
+  const [cost, setCost] = useState((() => {
+    console.log('useState')
+    return item.cost
+  })())
+  // const [distance, setDistance] = useState(item.distance)
+  // const cucu = useRef(setInterval(() => {
+  //   console.log('changing cost for item', item.id, ' to', cost + 1)
+  //   setCost(cost + 1)
+  // }, 1000))
+
+  useEffect(() => {
+    console.log('setting up interval, cost=', cost)
+    const interval = setInterval(() => {
+      console.log('changing cost for item', item.id, 'from', cost, 'to', cost + 1)
+      setCost(cost + 1)
+      //   => {
+      //   console.log('inside setCost')
+      //   return prevCost + 1
+      // }
+    }, 1000)
+    
+    return () => {
+      console.log('clearing interval')
+      clearInterval(interval)
+    }
+  }, [])
+
+  // console.log('rendering', cost, distance, item)
   return <div className="fuel-item-details">
-    {item.station}
+    {dayjs(item.date).format("YYYY-MMM-DD")}<br />
+    {item.station}<br />
+    {item.location}<br />
+    {item.cost} / {cost}<br />
+    {/* Distance:
+    <input type="number" value={distance}
+      onChange={e => { console.log(e.target); setDistance(0) }}>
+    </input><br /> */}
+    {item.volume}<br />
+    {item.filled}<br />
+    {item.highwayVsOverall}<br />
   </div>
 }
