@@ -16,9 +16,10 @@ interface FuelItem {
   highwayVsOverall?: number
 }
 
+let index = 1
 const someData: FuelItem[] = [
   {
-    id: '1',
+    id: '' + index++,
     date: '2023/04/11 18:34',
     station: 'United Puma',
     location: 'Northbridge',
@@ -29,7 +30,7 @@ const someData: FuelItem[] = [
     highwayVsOverall: .20
   },
   {
-    id: '2',
+    id: '' + index++,
     date: '2023/04/14 15:21',
     station: 'BP',
     location: 'Pemberton',
@@ -40,7 +41,7 @@ const someData: FuelItem[] = [
     highwayVsOverall: .95
   },
   {
-    id: '3',
+    id: '' + index++,
     date: '2023/04/16 10:42',
     station: 'BP',
     location: 'Pemberton',
@@ -51,7 +52,7 @@ const someData: FuelItem[] = [
     highwayVsOverall: .50
   },
   {
-    id: '4',
+    id: '' + index++,
     date: '2023/04/18 18:54',
     station: 'BP',
     location: 'Wembley',
@@ -62,7 +63,7 @@ const someData: FuelItem[] = [
     highwayVsOverall: .90
   },
   {
-    id: '5',
+    id: '' + index++,
     date: '2023/04/11 18:34',
     station: 'United Puma',
     location: 'Northbridge',
@@ -73,7 +74,7 @@ const someData: FuelItem[] = [
     highwayVsOverall: .20
   },
   {
-    id: '6',
+    id: '' + index++,
     date: '2023/04/11 18:34',
     station: 'United Puma 44',
     location: 'Northbridge',
@@ -84,7 +85,7 @@ const someData: FuelItem[] = [
     highwayVsOverall: .20
   },
   {
-    id: '7',
+    id: '' + index++,
     date: '2023/04/11 18:34',
     station: 'United Puma 324',
     location: 'Northbridge',
@@ -95,7 +96,7 @@ const someData: FuelItem[] = [
     highwayVsOverall: .20
   },
   {
-    id: '8',
+    id: '' + index++,
     date: '2021/04/11 18:34',
     station: 'United Puma 3245',
     location: 'Northbridge',
@@ -106,7 +107,7 @@ const someData: FuelItem[] = [
     highwayVsOverall: .20
   },
   {
-    id: '9',
+    id: '' + index++,
     date: '2022/04/11 18:34',
     station: 'United Puma658546',
     location: 'Northbridge',
@@ -117,7 +118,7 @@ const someData: FuelItem[] = [
     highwayVsOverall: .20
   },
   {
-    id: '10',
+    id: '' + index++,
     date: '2020/04/11 18:34',
     station: 'United Puma9678',
     location: 'Northbridge',
@@ -128,9 +129,97 @@ const someData: FuelItem[] = [
     highwayVsOverall: .20
   },
   {
-    id: '11',
+    id: '' + index++,
     date: '2020/04/11 18:34',
     station: 'United Puma9678',
+    location: 'Northbridge',
+    distance: 192187,
+    cost: 95.19,
+    volume: 56.02,
+    filled: true,
+    highwayVsOverall: .20
+  },
+  {
+    id: '' + index++,
+    date: '2020/04/11 18:34',
+    station: 'United Puma9678',
+    location: 'Northbridge',
+    distance: 192187,
+    cost: 95.19,
+    volume: 56.02,
+    filled: true,
+    highwayVsOverall: .20
+  },
+  {
+    id: '' + index++,
+    date: '2020/04/11 18:34',
+    station: 'United Puma9678',
+    location: 'Northbridge',
+    distance: 192187,
+    cost: 95.19,
+    volume: 56.02,
+    filled: true,
+    highwayVsOverall: .20
+  },
+  {
+    id: '' + index++,
+    date: '2020/04/11 18:34',
+    station: 'United Puma9678',
+    location: 'Northbridge',
+    distance: 192187,
+    cost: 95.19,
+    volume: 56.02,
+    filled: true,
+    highwayVsOverall: .20
+  },
+  {
+    id: '' + index++,
+    date: '2020/04/11 18:34',
+    station: 'United Puma9678',
+    location: 'Northbridge',
+    distance: 192187,
+    cost: 95.19,
+    volume: 56.02,
+    filled: true,
+    highwayVsOverall: .20
+  },
+  {
+    id: '' + index++,
+    date: '2020/04/11 18:34',
+    station: 'United Puma9678',
+    location: 'Northbridge',
+    distance: 192187,
+    cost: 95.19,
+    volume: 56.02,
+    filled: true,
+    highwayVsOverall: .20
+  },
+  {
+    id: '' + index++,
+    date: '2020/04/11 18:34',
+    station: 'United Puma9678',
+    location: 'Northbridge',
+    distance: 192187,
+    cost: 95.19,
+    volume: 56.02,
+    filled: true,
+    highwayVsOverall: .20
+  },
+  {
+    id: '' + index++,
+    date: '2020/04/11 18:34',
+    station: 'United Puma9678',
+    location: 'Northbridge',
+    distance: 192187,
+    cost: 95.19,
+    volume: 56.02,
+    filled: true,
+    highwayVsOverall: .20
+  },
+  {
+    id: '' + index++,
+    date: '2020/04/11 18:34',
+    station: 'United !!!',
     location: 'Northbridge',
     distance: 192187,
     cost: 95.19,
@@ -146,10 +235,11 @@ export function Fuel() {
   data.sort((a, b) => dayjs(a.date).isAfter(dayjs(b.date)) ? -1 : 0)
 
   const handleClick = function (item: FuelItem) {
-    console.log('clicked on item', item)
-    const content = <div style={{ background: 'blue', width: '10rem', height: '9rem' }}>
-      <FuelItemDetails item={{ ...item }}></FuelItemDetails>
-    </div>
+    const content = (//<div style={{ background: 'blue', width: '10rem', height: '9rem' }}>
+      <FuelItemDetails item={{ ...item }} get={(item) => {
+        console.log(item)
+      }}/>
+    )//</div>
     showModal(content, ex => console.log(`returned`, ex, item))
   }
 
@@ -173,6 +263,10 @@ export function Fuel() {
 function valid(text: string) {
   return text.length > 0
 }
+
+// write code to double all elements in an array
+
+// define a var equal to 1
 
 export function FuelItemCard({ item, handleClick }:
   { item?: FuelItem, handleClick: (x: any) => void }) {
@@ -199,54 +293,22 @@ export function FuelItemCard({ item, handleClick }:
   </div>
 }
 
-export function FuelItemDetails({ item }: { item: FuelItem }) {
-  // const [count, setCount] = useState(0);
-  // useEffect(() => {
-  //   setInterval(() => {
-  //     setCount(prevCount => prevCount + 1);
-  //   }, 1000);
-  // }, []);
-  // return <h1>The component has been rendered for {count} seconds</h1>;
+export function FuelItemDetails({ item, get }: { item: FuelItem, get: (x: FuelItem) => void }) {
+  const [distance, setDistance] = useState(item.distance)
 
-
-console.log('before useSTate')
-  const [cost, setCost] = useState((() => {
-    console.log('useState')
-    return item.cost
-  })())
-  // const [distance, setDistance] = useState(item.distance)
-  // const cucu = useRef(setInterval(() => {
-  //   console.log('changing cost for item', item.id, ' to', cost + 1)
-  //   setCost(cost + 1)
-  // }, 1000))
-
-  useEffect(() => {
-    console.log('setting up interval, cost=', cost)
-    const interval = setInterval(() => {
-      console.log('changing cost for item', item.id, 'from', cost, 'to', cost + 1)
-      setCost(cost + 1)
-      //   => {
-      //   console.log('inside setCost')
-      //   return prevCost + 1
-      // }
-    }, 1000)
-    
-    return () => {
-      console.log('clearing interval')
-      clearInterval(interval)
-    }
-  }, [])
-
-  // console.log('rendering', cost, distance, item)
   return <div className="fuel-item-details">
     {dayjs(item.date).format("YYYY-MMM-DD")}<br />
     {item.station}<br />
     {item.location}<br />
-    {item.cost} / {cost}<br />
-    {/* Distance:
+    {item.cost}<br />
+    Distance:
     <input type="number" value={distance}
-      onChange={e => { console.log(e.target); setDistance(0) }}>
-    </input><br /> */}
+      onChange={e => {
+        let parsed = parseFloat((e.target as HTMLInputElement).value)
+        if (isNaN(parsed)) parsed = distance
+        setDistance(parsed)
+      }}>
+    </input><br />
     {item.volume}<br />
     {item.filled}<br />
     {item.highwayVsOverall}<br />
