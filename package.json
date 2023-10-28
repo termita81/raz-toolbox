@@ -11,15 +11,6 @@
     "ionic:serve": "npm run dev"
   },
   "dependencies": {
-    "@capacitor/android": "^4.7.1",
-    "@capacitor/app": "^4.1.1",
-    "@capacitor/camera": "^4.1.4",
-    "@capacitor/cli": "^4.7.1",
-    "@capacitor/core": "^4.7.1",
-    "@capacitor/haptics": "^4.1.0",
-    "@capacitor/keyboard": "^4.1.1",
-    "@capacitor/local-notifications": "^4.1.5",
-    "@capacitor/status-bar": "^4.1.1",
     "@preact/signals": "^1.1.3",
     "dayjs": "^1.11.7",
     "preact": "^10.13.0",

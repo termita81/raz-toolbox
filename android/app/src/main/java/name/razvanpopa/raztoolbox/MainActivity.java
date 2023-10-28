@@ -1,4 +1,4 @@
-package net.razvanpopa.raztoolbox;
+package name.razvanpopa.raztoolbox;
 
 import com.getcapacitor.BridgeActivity;
 

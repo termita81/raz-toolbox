@@ -21,5 +21,8 @@ npx cap add android
 yarn build
 
 npx cap sync
+// or npx cap sync android
 
 npx cap open android
+
+// risky to upgrade gradle to 8.*!!! starts asking for stuff in build.gradle that I don't know how to provide 
