@@ -278,7 +278,7 @@ export function FuelItemCard({ item, handleClick }:
   const cost = item ? `$${item.cost.toFixed(2)}` : ''
   const volume = item ? `${item.volume} ltr` : ''
 
-  return <div className="fuel-item-card" onClick={() => handleClick(item)}>
+  return <div className="fuel-item-card" onClick={() => console.log(handleClick)}>
     <div>
       <span>📅 {dateFormatted}</span>
       <span>{from}</span>
