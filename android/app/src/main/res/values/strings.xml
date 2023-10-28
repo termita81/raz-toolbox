@@ -2,6 +2,6 @@
 <resources>
     <string name="app_name">Raz\'s Toolbox</string>
     <string name="title_activity_main">Raz\'s Toolbox</string>
-    <string name="package_name">net.razvanpopa.raztoolbox</string>
-    <string name="custom_url_scheme">net.razvanpopa.raztoolbox</string>
+    <string name="package_name">name.razvanpopa.raztoolbox</string>
+    <string name="custom_url_scheme">name.razvanpopa.raztoolbox</string>
 </resources>

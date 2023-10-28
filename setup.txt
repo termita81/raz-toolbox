@@ -21,5 +21,6 @@ npx cap add android
 yarn build
 
 npx cap sync
+  or npx cap sync android
 
 npx cap open android

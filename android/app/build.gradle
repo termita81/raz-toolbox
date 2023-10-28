@@ -1,11 +1,9 @@
 apply plugin: 'com.android.application'
 
 android {
-
-    namespace 'net.razvanpopa.raztoolbox'
     compileSdkVersion rootProject.ext.compileSdkVersion
     defaultConfig {
-        applicationId "net.razvanpopa.raztoolbox"
+        applicationId "name.razvanpopa.raztoolbox"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
