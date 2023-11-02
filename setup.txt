@@ -9,9 +9,7 @@ yarn dev
 yarn add preact-router
 
 // https://capacitorjs.com/docs/getting-started
-yarn add @capacitor/cli @capacitor/core @capacitor/android
-
-// ? yarn add @capacitor/app @capacitor/haptics @capacitor/keyboard @capacitor/status-bar
+yarn add @capacitor/cli @capacitor/core @capacitor/android @capacitor/app @capacitor/haptics @capacitor/keyboard @capacitor/status-bar @capacitor/local-notifications
 
 // setup app for mobile platform: id etc
 npx cap init
@@ -21,7 +19,6 @@ npx cap add android
 yarn build
 
 npx cap sync
-// or npx cap sync android
 
 npx cap open android
 
