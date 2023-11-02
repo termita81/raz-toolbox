@@ -4,7 +4,9 @@ const config: CapacitorConfig = {
   appId: 'name.razvanpopa.raztoolbox',
   appName: "Raz's Toolbox",
   webDir: 'dist',
-  bundledWebRuntime: false
+  server: {
+    androidScheme: 'https'
+  }
 };
 
 export default config;
