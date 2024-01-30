@@ -236,11 +236,11 @@ export function Fuel() {
 
   const handleClick = function (item: FuelItem) {
     const content = (//<div style={{ background: 'blue', width: '10rem', height: '9rem' }}>
-      <FuelItemDetails item={{ ...item }} get={(item) => {
-        console.log(item)
+      <FuelItemDetails item={{ ...item }} get={(x) => {
+        console.log('get inside FuelItemDetails', x)
       }}/>
     )//</div>
-    showModal(content, ex => console.log(`returned`, ex, item))
+    showModal(content, ex => console.log(`returned`, ex, 'WHAAAT', item))
   }
 
   return <div className="fuel-container" onBlur={() => console.log('blurred')}>
@@ -264,10 +264,6 @@ function valid(text: string) {
   return text.length > 0
 }
 
-// write code to double all elements in an array
-
-// define a var equal to 1
-
 export function FuelItemCard({ item, handleClick }:
   { item?: FuelItem, handleClick: (x: any) => void }) {
   const date = dayjs(item?.date ?? Date())
@@ -278,7 +274,9 @@ export function FuelItemCard({ item, handleClick }:
   const cost = item ? `$${item.cost.toFixed(2)}` : ''
   const volume = item ? `${item.volume} ltr` : ''
 
-  return <div className="fuel-item-card" onClick={() => console.log(handleClick)}>
+  return <div className="fuel-item-card" 
+    //onClick={() => console.log(JSON.stringify(handleClick))}
+    onClick={handleClick}>
     <div>
       <span>📅 {dateFormatted}</span>
       <span>{from}</span>
@@ -292,15 +290,19 @@ export function FuelItemCard({ item, handleClick }:
     </div>
   </div>
 }
+export function FuelItemDetails1(props: unknown) {
+  console.log(props)
+  return <div>asdasdads</div>
+}
 
 export function FuelItemDetails({ item, get }: { item: FuelItem, get: (x: FuelItem) => void }) {
   const [distance, setDistance] = useState(item.distance)
 
   return <div className="fuel-item-details">
-    {dayjs(item.date).format("YYYY-MMM-DD")}<br />
-    {item.station}<br />
-    {item.location}<br />
-    {item.cost}<br />
+    Time: {dayjs(item.date).format("YYYY-MMM-DD")}<br />
+    Station: {item.station}<br />
+    Location: {item.location}<br />
+    Cost: {item.cost}<br />
     Distance:
     <input type="number" value={distance}
       onChange={e => {
@@ -309,8 +311,8 @@ export function FuelItemDetails({ item, get }: { item: FuelItem, get: (x: FuelIt
         setDistance(parsed)
       }}>
     </input><br />
-    {item.volume}<br />
-    {item.filled}<br />
-    {item.highwayVsOverall}<br />
+    Volume: {item.volume}<br />
+    Filled up: {item.filled}<br />
+    Highway vs Overall: {item.highwayVsOverall}<br />
   </div>
 }
