@@ -3,7 +3,7 @@ import Match from 'preact-router/match';
 // import { signal } from '@preact/signals'
 import ToolLauncher, { ToolLauncherProps } from '../../components/ToolLauncher/ToolLauncher'
 import './Main.css'
-import { Fuel, FuelItemDetails1 } from '../Fuel/Fuel';
+import { Fuel, FuelItemDetails } from '../Fuel/Fuel';
 import { Modal } from '../../components/Modal/Modal';
 // import { useState } from 'preact/hooks';
 // import { JSX } from 'preact/jsx-runtime';
@@ -40,7 +40,7 @@ export default function Main(props: unknown) {
           <Router onChange={handleRoute}>
             <span path="/">Home</span>
             <Route path="/fuel" component={Fuel} />
-            <Route path="/fuel/:ss" component={FuelItemDetails1} />
+            {/* <Route path="/fuel/:ss" component={FuelItemDetails} /> */}
             <span path="/data"><div style={{ color: '#e30000' }}>Export<br />Import</div></span>
             <span path="/settings"><div style={{ color: '#e30000' }}>Settings<br />but nothing at the moment</div></span>
           </Router>

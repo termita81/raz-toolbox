@@ -235,12 +235,14 @@ export function Fuel() {
   data.sort((a, b) => dayjs(a.date).isAfter(dayjs(b.date)) ? -1 : 0)
 
   const handleClick = function (item: FuelItem) {
+    let www = item
     const content = (//<div style={{ background: 'blue', width: '10rem', height: '9rem' }}>
-      <FuelItemDetails item={{ ...item }} get={(x) => {
+      <FuelItemDetails item={item} get={(x) => {
         console.log('get inside FuelItemDetails', x)
+        www = x
       }}/>
     )//</div>
-    showModal(content, ex => console.log(`returned`, ex, 'WHAAAT', item))
+    showModal(content, ex => console.log(`returned`, ex, 'WHAAAT', item, www))
   }
 
   return <div className="fuel-container" onBlur={() => console.log('blurred')}>
@@ -276,7 +278,7 @@ export function FuelItemCard({ item, handleClick }:
 
   return <div className="fuel-item-card" 
     //onClick={() => console.log(JSON.stringify(handleClick))}
-    onClick={handleClick}>
+    onClick={() => handleClick(item)}>
     <div>
       <span>📅 {dateFormatted}</span>
       <span>{from}</span>
@@ -290,13 +292,9 @@ export function FuelItemCard({ item, handleClick }:
     </div>
   </div>
 }
-export function FuelItemDetails1(props: unknown) {
-  console.log(props)
-  return <div>asdasdads</div>
-}
 
 export function FuelItemDetails({ item, get }: { item: FuelItem, get: (x: FuelItem) => void }) {
-  const [distance, setDistance] = useState(item.distance)
+  // const [theItem, setTheItem] = useState(item)
 
   return <div className="fuel-item-details">
     Time: {dayjs(item.date).format("YYYY-MMM-DD")}<br />
@@ -304,11 +302,13 @@ export function FuelItemDetails({ item, get }: { item: FuelItem, get: (x: FuelIt
     Location: {item.location}<br />
     Cost: {item.cost}<br />
     Distance:
-    <input type="number" value={distance}
-      onChange={e => {
+    <input type="number" value={item.distance}
+      onInput={e => {
         let parsed = parseFloat((e.target as HTMLInputElement).value)
-        if (isNaN(parsed)) parsed = distance
-        setDistance(parsed)
+        if (isNaN(parsed)) parsed = item.distance
+        const it = {...item, distance: parsed}
+        console.log('it', it)
+        get(it)
       }}>
     </input><br />
     Volume: {item.volume}<br />
