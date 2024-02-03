@@ -6,18 +6,20 @@ yarn dev
 
 // OK so it works
 
-yarn add preact-router
+npm add preact-router
 
 // https://capacitorjs.com/docs/getting-started
-yarn add @capacitor/cli @capacitor/core @capacitor/android @capacitor/app @capacitor/haptics @capacitor/keyboard @capacitor/status-bar @capacitor/local-notifications
+npm add @capacitor/cli @capacitor/core @capacitor/android @capacitor/app @capacitor/haptics @capacitor/keyboard @capacitor/status-bar @capacitor/local-notifications -s
 
 // setup app for mobile platform: id etc
 npx cap init
 
 npx cap add android
 
-yarn build
+npm run build
 
 npx cap sync
 
 npx cap open android
+
+// risky to upgrade gradle to 8.*!!! starts asking for stuff in build.gradle that I don't know how to provide 

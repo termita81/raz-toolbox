@@ -1,19 +1,39 @@
-
-/* .logo {
-  height: 6em;
-  padding: 1.5em;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.preact:hover {
-  filter: drop-shadow(0 0 2em #673ab8aa);
-} */
-
 .card {
   padding: 12em;
 }
 
-/* .read-the-docs {
-  color: #888;
-} */
+.nav {
+  height: 4rem;
+  font-size: 1.5rem;
+  
+  background-color: #FE5F55;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  overflow-x: auto;
+
+  /* center content */
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  /* /center content */
+  z-index: 1;
+}
+.main-container {
+  
+  width: 100%;
+}
+.main {
+  background-color: rgb(163, 220, 255);
+  height: calc(100vh - 5rem);
+  margin-bottom: 3rem;
+  overflow-y: auto;
+  box-sizing: border-box;
+
+  /* center content */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* /center content */
+}
