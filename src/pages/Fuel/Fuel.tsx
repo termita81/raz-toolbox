@@ -3,246 +3,38 @@ import './Fuel.scss'
 import { JSX } from 'preact/jsx-runtime'
 import dayjs from 'dayjs'
 import { showModal } from '../../components/Modal/Modal'
+import dummy from './dummy'
 
 interface FuelItem {
-  id: string,
+  id: number, //string,
   date: string,
   station: string,
   location: string,
-  distance: number,
+  odometer: number,
   cost: number,
   volume: number,
   filled: boolean,
   highwayVsOverall?: number
 }
 
-let index = 1
-const someData: FuelItem[] = [
-  {
-    id: '' + index++,
-    date: '2023/04/11 18:34',
-    station: 'United Puma',
-    location: 'Northbridge',
-    distance: 192187,
-    cost: 95.19,
-    volume: 56.02,
-    filled: true,
-    highwayVsOverall: .20
-  },
-  {
-    id: '' + index++,
-    date: '2023/04/14 15:21',
-    station: 'BP',
-    location: 'Pemberton',
-    distance: 192554,
-    cost: 79.62,
-    volume: 42.15,
-    filled: false,
-    highwayVsOverall: .95
-  },
-  {
-    id: '' + index++,
-    date: '2023/04/16 10:42',
-    station: 'BP',
-    location: 'Pemberton',
-    distance: 192718,
-    cost: 49.96,
-    volume: 26.45,
-    filled: true,
-    highwayVsOverall: .50
-  },
-  {
-    id: '' + index++,
-    date: '2023/04/18 18:54',
-    station: 'BP',
-    location: 'Wembley',
-    distance: 193189,
-    cost: 99.95,
-    volume: 56.50,
-    filled: true,
-    highwayVsOverall: .90
-  },
-  {
-    id: '' + index++,
-    date: '2023/04/11 18:34',
-    station: 'United Puma',
-    location: 'Northbridge',
-    distance: 192187,
-    cost: 95.19,
-    volume: 56.02,
-    filled: true,
-    highwayVsOverall: .20
-  },
-  {
-    id: '' + index++,
-    date: '2023/04/11 18:34',
-    station: 'United Puma 44',
-    location: 'Northbridge',
-    distance: 192187,
-    cost: 95.19,
-    volume: 56.02,
-    filled: true,
-    highwayVsOverall: .20
-  },
-  {
-    id: '' + index++,
-    date: '2023/04/11 18:34',
-    station: 'United Puma 324',
-    location: 'Northbridge',
-    distance: 192187,
-    cost: 95.19,
-    volume: 56.02,
-    filled: true,
-    highwayVsOverall: .20
-  },
-  {
-    id: '' + index++,
-    date: '2021/04/11 18:34',
-    station: 'United Puma 3245',
-    location: 'Northbridge',
-    distance: 192187,
-    cost: 95.19,
-    volume: 56.02,
-    filled: true,
-    highwayVsOverall: .20
-  },
-  {
-    id: '' + index++,
-    date: '2022/04/11 18:34',
-    station: 'United Puma658546',
-    location: 'Northbridge',
-    distance: 192187,
-    cost: 95.19,
-    volume: 56.02,
-    filled: true,
-    highwayVsOverall: .20
-  },
-  {
-    id: '' + index++,
-    date: '2020/04/11 18:34',
-    station: 'United Puma9678',
-    location: 'Northbridge',
-    distance: 192187,
-    cost: 95.19,
-    volume: 56.02,
-    filled: true,
-    highwayVsOverall: .20
-  },
-  {
-    id: '' + index++,
-    date: '2020/04/11 18:34',
-    station: 'United Puma9678',
-    location: 'Northbridge',
-    distance: 192187,
-    cost: 95.19,
-    volume: 56.02,
-    filled: true,
-    highwayVsOverall: .20
-  },
-  {
-    id: '' + index++,
-    date: '2020/04/11 18:34',
-    station: 'United Puma9678',
-    location: 'Northbridge',
-    distance: 192187,
-    cost: 95.19,
-    volume: 56.02,
-    filled: true,
-    highwayVsOverall: .20
-  },
-  {
-    id: '' + index++,
-    date: '2020/04/11 18:34',
-    station: 'United Puma9678',
-    location: 'Northbridge',
-    distance: 192187,
-    cost: 95.19,
-    volume: 56.02,
-    filled: true,
-    highwayVsOverall: .20
-  },
-  {
-    id: '' + index++,
-    date: '2020/04/11 18:34',
-    station: 'United Puma9678',
-    location: 'Northbridge',
-    distance: 192187,
-    cost: 95.19,
-    volume: 56.02,
-    filled: true,
-    highwayVsOverall: .20
-  },
-  {
-    id: '' + index++,
-    date: '2020/04/11 18:34',
-    station: 'United Puma9678',
-    location: 'Northbridge',
-    distance: 192187,
-    cost: 95.19,
-    volume: 56.02,
-    filled: true,
-    highwayVsOverall: .20
-  },
-  {
-    id: '' + index++,
-    date: '2020/04/11 18:34',
-    station: 'United Puma9678',
-    location: 'Northbridge',
-    distance: 192187,
-    cost: 95.19,
-    volume: 56.02,
-    filled: true,
-    highwayVsOverall: .20
-  },
-  {
-    id: '' + index++,
-    date: '2020/04/11 18:34',
-    station: 'United Puma9678',
-    location: 'Northbridge',
-    distance: 192187,
-    cost: 95.19,
-    volume: 56.02,
-    filled: true,
-    highwayVsOverall: .20
-  },
-  {
-    id: '' + index++,
-    date: '2020/04/11 18:34',
-    station: 'United Puma9678',
-    location: 'Northbridge',
-    distance: 192187,
-    cost: 95.19,
-    volume: 56.02,
-    filled: true,
-    highwayVsOverall: .20
-  },
-  {
-    id: '' + index++,
-    date: '2020/04/11 18:34',
-    station: 'United !!!',
-    location: 'Northbridge',
-    distance: 192187,
-    cost: 95.19,
-    volume: 56.02,
-    filled: true,
-    highwayVsOverall: .20
-  },
-]
-
 export function Fuel() {
   const [text, setText] = useState('')
-  const [data, setData] = useState<FuelItem[]>(someData)
+  const [data, setData] = useState<FuelItem[]>(dummy)
   data.sort((a, b) => dayjs(a.date).isAfter(dayjs(b.date)) ? -1 : 0)
 
   const handleClick = function (item: FuelItem) {
     let www = item
     const content = (//<div style={{ background: 'blue', width: '10rem', height: '9rem' }}>
-      <FuelItemDetails item={item} get={(x) => {
-        console.log('get inside FuelItemDetails', x)
-        www = x
-      }}/>
+      <FuelItemDetails item={item} callback={x => www = x}/>
     )//</div>
-    showModal(content, ex => console.log(`returned`, ex, 'WHAAAT', item, www))
+    showModal(content, ex => {
+      if (!ex) return
+      setData(prev => {
+        // const index = prev.findIndex(x => x.id === www.id)
+        let result = [...prev.filter(x => x.id !== www.id), www]
+        return result.sort((a, b) => dayjs(a.date).isAfter(dayjs(b.date)) ? -1 : 0)
+      })
+    })
   }
 
   return <div className="fuel-container" onBlur={() => console.log('blurred')}>
@@ -257,7 +49,7 @@ export function Fuel() {
     }}></input> */}
 
     {data.map((item, index) => {
-      return <FuelItemCard key={item.id + index} {...{ item, handleClick }} />
+      return <FuelItemCard key={index} {...{ item, handleClick }} />
     })}
   </div>
 }
@@ -272,7 +64,7 @@ export function FuelItemCard({ item, handleClick }:
   const dateStringFormat = date.year() < new Date().getFullYear() ? "YYYY-MMM-DD" : "MMM DD"
   const dateFormatted = dayjs(date).format(dateStringFormat)
   const from = item ? [item.station, item.location].join(', ') : ''
-  const distance = item ? `${item.distance.toLocaleString('en')} km` : ''
+  const distance = item ? `${item.odometer.toLocaleString('en')} km` : ''
   const cost = item ? `$${item.cost.toFixed(2)}` : ''
   const volume = item ? `${item.volume} ltr` : ''
 
@@ -293,26 +85,71 @@ export function FuelItemCard({ item, handleClick }:
   </div>
 }
 
-export function FuelItemDetails({ item, get }: { item: FuelItem, get: (x: FuelItem) => void }) {
-  // const [theItem, setTheItem] = useState(item)
-
+export function FuelItemDetails({ item, callback: get }: { item: FuelItem, callback: (x: FuelItem) => void }) {
   return <div className="fuel-item-details">
-    Time: {dayjs(item.date).format("YYYY-MMM-DD")}<br />
-    Station: {item.station}<br />
-    Location: {item.location}<br />
-    Cost: {item.cost}<br />
-    Distance:
-    <input type="number" value={item.distance}
-      onInput={e => {
-        let parsed = parseFloat((e.target as HTMLInputElement).value)
-        if (isNaN(parsed)) parsed = item.distance
-        const it = {...item, distance: parsed}
-        console.log('it', it)
-        get(it)
-      }}>
-    </input><br />
-    Volume: {item.volume}<br />
-    Filled up: {item.filled}<br />
-    Highway vs Overall: {item.highwayVsOverall}<br />
+
+    <label> Time <br/>
+      <input type="text" value={item.date}
+        onChange={e => {
+          let date = (e.target as HTMLInputElement).value
+          get({...item, date})
+        }}></input>
+    </label><br/>
+
+    <label> Station <br/>
+      <input type="text" value={item.station}
+        onChange={e => {
+          let station = (e.target as HTMLInputElement).value
+          get({...item, station})
+        }}></input>
+    </label><br/>
+
+    <label> Location <br/>
+      <input type="text" value={item.location}
+        onChange={e => {
+          let location = (e.target as HTMLInputElement).value
+          get({...item, location})
+        }}></input>
+    </label><br/>
+
+    <label> Cost <br/>
+      <input type="text" value={item.cost}
+        onChange={e => {
+          let cost = parseFloat((e.target as HTMLInputElement).value)
+          get({...item, cost})
+        }}></input>
+    </label><br/>
+
+    <label> Odometer <br/>
+      <input type="text" value={item.odometer}
+        onChange={e => {
+          let odometer = parseFloat((e.target as HTMLInputElement).value)
+          get({...item, odometer})
+        }}></input>
+    </label><br/>
+
+    <label> Volume <br/>
+      <input type="text" value={item.volume}
+        onChange={e => {
+          let volume = parseFloat((e.target as HTMLInputElement).value)
+          get({...item, volume})
+        }}></input>
+    </label><br/>
+
+    <label> Filled <br/>
+      <input type="checkbox" checked={item.filled}
+        onChange={e => {
+          let filled = (e.target as HTMLInputElement).checked
+          get({...item, filled})
+        }}></input>
+    </label><br/>
+
+    <label> Highway vs Overall <br/>
+      <input type="number" value={item.highwayVsOverall}
+        onChange={e => {
+          let highwayVsOverall = parseInt((e.target as HTMLInputElement).value)
+          get({...item, highwayVsOverall})
+        }}></input>
+    </label>
   </div>
 }
