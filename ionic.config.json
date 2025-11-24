@@ -1,7 +1,0 @@
-{
-  "name": "raz-toolbox",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "custom"
-}
